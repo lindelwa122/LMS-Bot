@@ -2,7 +2,7 @@ from subprocess import run
 import requests
 from pathlib import Path
 from json import loads
-from os import path
+from os import path, remove
 import sys
 
 from utils import *
@@ -37,6 +37,8 @@ def main():
         print(results.stdout)
     else:
         print(results.stderr)
+        
+    remove(tmp_test_file)
         
 if __name__ == '__main__':
     main()

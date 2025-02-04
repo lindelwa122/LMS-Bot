@@ -18,4 +18,6 @@ def get_activity_id():
             elif "'" in activity_id:
                 activity_id = activity_id.replace("'", "'")
                 
+    exercises_file.close()
+                
     return activity_id
