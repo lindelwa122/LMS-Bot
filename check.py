@@ -1,10 +1,25 @@
 from subprocess import run
 import requests
 from pathlib import Path
+from json import loads
+from os import path
+import sys
+
+from utils import *
 
 
 def main():
-    response = requests.get('https://gist.githubusercontent.com/lindelwa122/12c9a25ff8250b2949bb36baebf035d5/raw/194e5cdd320644ff0436d93e0c287b91d32cbf6e/calculator.py')
+    activity_id = get_activity_id()
+            
+    # Get project gist link
+    response = requests.get(f'http://127.0.0.1:8000/projects/get/{activity_id}')
+    if response.status_code != 200:
+        exit('Project link is not found')
+    
+    content = response.content
+    data = loads(content.decode())
+    
+    response = requests.get(data['url'])
     
     if response.status_code == 200:
         tmp_test_file = Path('test_file_tmp.py')
@@ -22,7 +37,6 @@ def main():
         print(results.stdout)
     else:
         print(results.stderr)
-
-
+        
 if __name__ == '__main__':
     main()
