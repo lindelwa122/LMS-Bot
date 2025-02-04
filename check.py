@@ -39,6 +39,9 @@ def main():
         print(results.stderr)
         
     remove(tmp_test_file)
+    
+    # Get score
+    
         
 if __name__ == '__main__':
     main()
