@@ -6,6 +6,7 @@ from pathlib import Path
 from requests import get, post
 from subprocess import run
 from sys import exit
+from time import sleep
 
 class LMS:
     def __init__(self, server_link: str, exercises_path: str = '.lms/exercises.toml', test_filename: str = 'test_temp_file.py', test_runner: str = 'colorful_test'):
@@ -144,12 +145,14 @@ class LMS:
         output the results in the console.
         """
         
-        print('Getting the activity id')
+        print('Getting the activity id\n')
+        sleep(1)
         
         # Get activity id
         activity_id = self.get_activity_id()
         
-        print('Connecting...')
+        print('Connecting...\n')
+        sleep(3)
         
         # Get project link
         project_link = self.get_project_link(activity_id)
@@ -176,7 +179,8 @@ class LMS:
         server, and push the code to github.
         """
         
-        print('Authorizing...')
+        print('Authorizing...\n')
+        sleep(3)
         
         GL_SERVER = 'https://gitlab.wethinkco.de'
         GITLAB_TOKEN = environ.get('GL_TOKEN')
@@ -208,20 +212,23 @@ class LMS:
         payload = {
             'username': username,
             'grade': grade,
-            'activity_id': activity_id,
+            'project_id': activity_id,
         }
         
         response = post(f'{self.server_link}/projects/submit', data=payload)
         if response.status_code != 200:
             print(f'Error: {response.status_code}',
                 'We couldn\'t establish a connection with the server. \
-                Please check your internet connection and try again.')
+                Please check your internet connection and try again.\n')
+            exit()
             
-        print('Submitted.')
+        print('Submitted.\n')
+        sleep(1)
         
-        print('Trying to push to Gitlab...')
+        print('Trying to push to Gitlab...\n')
+        sleep(3)
         
-        system(f'git add . && git commit -m {commit_msg} && git push')
+        system(f'git add . && git commit -m "{commit_msg}" && git push')
         
         print('Process completed successfully!')
         
