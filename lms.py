@@ -145,7 +145,7 @@ class LMS:
         output the results in the console.
         """
         
-        print('Getting the activity id\n')
+        print('Getting the activity id...\n')
         sleep(1)
         
         # Get activity id
