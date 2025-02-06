@@ -178,7 +178,7 @@ class LMS:
         
         print('Authorizing...')
         
-        GL_SERVER = 'https://github.wethinkco.de'
+        GL_SERVER = 'https://gitlab.wethinkco.de'
         GITLAB_TOKEN = environ.get('GL_TOKEN')
         
         if not GITLAB_TOKEN:
