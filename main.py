@@ -66,3 +66,4 @@ def main():
         case _:
             print('Unrecognized instruction. Expected "check" or "submit"')
     
+main()
