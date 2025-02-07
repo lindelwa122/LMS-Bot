@@ -50,7 +50,7 @@ def main():
     
     # Create an LMS object
     lms = LMS(
-        'http://127.0.0.1:8000',
+        'https://lms-api-l0ua.onrender.com',
         args.path,
         args.filename,
         args.runner,
