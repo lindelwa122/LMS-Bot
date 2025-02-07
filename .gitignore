@@ -4,3 +4,5 @@ __pycache__
 */__pycache__
 *tmp*
 venv
+.lms/exercises.toml
+.lms/
