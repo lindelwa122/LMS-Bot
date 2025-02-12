@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "lms-grader"
-version = "0.0.6"
+version = "0.0.7"
 description = "A Learning Management System Grader."
 authors = ["nqabenhle <nqmlabajhb024@student.wethinkcode.co.za>"]
 readme = "README.md"

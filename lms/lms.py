@@ -35,7 +35,7 @@ class LMS:
         
         # If the '.lms/exercises.toml' path is not found or is not a file
         if not (path.exists(self.exercises_path) and path.isfile(self.exercises_path)):
-            exit('Could\'t find ".lms/exercises.toml".')
+            exit(f'Couldn\'t find "{self.exercises_path}".')
             
         file = open(self.exercises_path, 'r')
         info = file.readlines()
@@ -58,7 +58,7 @@ class LMS:
                             
                 return activity_id
             
-        exit('activity_id was not found in ".lms/exercises.toml".')
+        exit(f'activity_id was not found in "{self.exercises_path}".')
     
     
     def get_project_link(self, activity_id: str):
@@ -88,7 +88,7 @@ class LMS:
             return response.content
             
         else:
-            print('Could\'t download the test file. Please check your \
+            print('Couldn\'t download the test file. Please check your \
                 internet connection. If the problem persists, report to \
                 the LMS team.')
             exit(1)
